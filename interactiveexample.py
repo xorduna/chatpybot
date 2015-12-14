@@ -6,6 +6,7 @@ __author__ = 'xorduna'
 
 cb = ChatBot()
 
+
 @cb.answer(answer='A Barcelona', next='barcelona')
 @cb.answer(answer='A Madrid', next='madrid')
 @cb.step(next='altra_ciutat')
@@ -21,13 +22,16 @@ def barcelona(answer):
 
     return 'Quina edat tens?'
 
+
 @cb.step(next='inici')
 def altra_ciutat(answer):
     return 'Quina bona idea anar a ' + unicode(answer)
 
+
 @cb.step(next='inici')
 def edat(answer):
     return 'Sembles jove per tenir ' + unicode(answer)
+
 
 @cb.step(next='inici')
 def bcn_jove(answer):
