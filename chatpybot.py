@@ -37,7 +37,7 @@ class ChatBot:
         self.steps[name] = Step(name=name, response=response, next=next)
 
     def add_answer(self, step, answer, next_step, response=None):
-        #check if step exists, if not, create!
+        # check if step exists, if not, create!
         if not self.steps.has_key(step):
             self.add_step(step, response)
         self.steps[step].add_answer(answer, next_step)
@@ -69,7 +69,7 @@ class ChatBot:
         return self.steps[new_step]
 
     #decorator code!
-    def step(self, next, callback=None):
+    def default_next(self, next, callback=None):
         def decorator(callback):
             name = callback.__name__
             self.add_step(name, response=callback, next=next)
