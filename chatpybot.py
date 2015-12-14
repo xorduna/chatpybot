@@ -16,8 +16,8 @@ class Step:
         return len(self.answers.keys()) > 0
 
     # net step is to make this independent from arguments!
-    def response(self, answer):
-        return self.response(answer)
+    def response(self, *kwargs):
+        return self.response(*kwargs)
 
     #def next_step(self):
     #    return self.next_step
@@ -69,7 +69,7 @@ class ChatBot:
         return self.steps[new_step]
 
     #decorator code!
-    def default_next(self, next, callback=None):
+    def step(self, next, callback=None):
         def decorator(callback):
             name = callback.__name__
             self.add_step(name, response=callback, next=next)
